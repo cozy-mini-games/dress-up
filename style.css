@@ -1,0 +1,51 @@
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;-webkit-user-select:none;user-select:none;}
+html,body{margin:0;height:100%;}
+body{
+  display:flex;flex-direction:column;height:100dvh;overflow:hidden;
+  background:#eef6f3;color:#4f6b66;
+  font-family:system-ui,-apple-system,"PingFang TC","Noto Sans TC",sans-serif;
+}
+button{font-family:inherit;color:inherit;}
+header{display:flex;align-items:center;gap:8px;padding:10px 12px 6px;}
+header h1{flex:1;margin:0;font-size:20px;font-weight:800;letter-spacing:1px;}
+.icon{border:0;background:#fff;width:38px;height:38px;border-radius:12px;font-size:22px;line-height:1;box-shadow:0 2px 0 #d5e6e0;}
+#back{visibility:hidden;font-size:30px;padding-bottom:4px;}
+body.in-game #back{visibility:visible;}
+.pill{border:0;border-radius:999px;padding:8px 12px;font-size:13px;font-weight:800;background:#fff;color:#5aa592;box-shadow:0 2px 0 #d5e6e0;display:none;}
+body.in-game #install{display:none !important;}
+
+#home{flex:1;overflow:auto;padding:6px 16px 20px;}
+body.in-game #home{display:none;}
+.lead{margin:6px 2px 14px;font-size:15px;color:#7b9993;}
+.cards{display:flex;flex-direction:column;gap:14px;}
+.card{display:flex;align-items:center;gap:14px;border:0;border-radius:22px;padding:18px 16px;text-align:left;box-shadow:0 5px 0 #0000000f;}
+.card:active{transform:translateY(3px);box-shadow:0 2px 0 #0000000f;}
+.card .art{font-size:44px;width:64px;height:64px;border-radius:18px;background:#fff8;display:flex;align-items:center;justify-content:center;flex:none;}
+.card b{display:block;font-size:19px;font-weight:800;}
+.card small{display:block;font-size:13px;opacity:.75;margin-top:2px;}
+.card em{margin-left:auto;font-style:normal;font-size:12px;font-weight:800;opacity:.7;white-space:nowrap;}
+.c-wash{background:#d4ecfb;color:#3f6f8f;}
+.c-sort{background:#fde6c8;color:#8a6033;}
+.c-toys{background:#f6d9ea;color:#8a4a6c;}
+.foot{text-align:center;font-size:12px;color:#a9c0bb;margin-top:26px;}
+
+#game{flex:1;min-height:0;display:none;flex-direction:column;}
+body.in-game #game{display:flex;}
+
+#toast{position:fixed;left:50%;top:14px;transform:translate(-50%,-90px);background:#fff;color:#4f8f80;font-weight:800;padding:10px 16px;border-radius:14px;box-shadow:0 4px 14px #4f8f8033;transition:transform .35s;z-index:50;white-space:nowrap;}
+#toast.show{transform:translate(-50%,0);}
+.fx{position:fixed;pointer-events:none;font-size:20px;z-index:40;animation:fly 1s ease-out forwards;}
+@keyframes fly{0%{transform:translate(-50%,-50%) scale(.4);opacity:1;}100%{transform:translate(calc(-50% + var(--dx)),calc(-50% + var(--dy))) scale(1.15) rotate(var(--r));opacity:0;}}
+
+/* 共用：關卡列 + 完成畫面 */
+.bar{display:flex;align-items:center;gap:10px;padding:2px 16px 8px;font-size:14px;font-weight:700;}
+.bar .prog{flex:1;height:12px;border-radius:9px;background:#fff;overflow:hidden;box-shadow:inset 0 1px 0 #0000000d;}
+.bar .prog i{display:block;height:100%;width:0;border-radius:9px;background:linear-gradient(90deg,#8fd6c3,#7cc4ea);transition:width .25s;}
+.done{position:absolute;inset:0;display:none;align-items:center;justify-content:center;background:#ffffff8c;z-index:20;}
+.done.show{display:flex;}
+.done>div{background:#fff;border-radius:24px;padding:22px 26px;text-align:center;box-shadow:0 8px 24px #4f8f8030;animation:popin .45s cubic-bezier(.3,1.6,.5,1);}
+.done h2{margin:0 0 4px;font-size:24px;color:#4f8f80;}
+.done p{margin:0 0 14px;color:#7b9993;}
+.btn{border:0;border-radius:14px;padding:12px 22px;font-size:16px;font-weight:800;background:#7cc9b4;color:#fff;box-shadow:0 3px 0 #58a893;}
+.btn:active{transform:translateY(2px);box-shadow:none;}
+@keyframes popin{0%{transform:scale(.6);opacity:0;}100%{transform:scale(1);opacity:1;}}
