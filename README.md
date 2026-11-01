@@ -10,7 +10,7 @@
 - 純 HTML/CSS/JS，沒有打包工具、沒有圖片素材（全部用 canvas / SVG 畫，音效用 WebAudio 合成）。
   - `index.html`：首頁卡片＋載入順序 app.js → games/*.js → `App.start()`。
   - `app.js`：外殼。`App.register({id,name,mount(el),unmount(),progress()})`、`App.go(id)`、`App.SFX.{pop,click,snap,squish,scrub,whoosh,ding,soft}`、`App.buzz(ms)`、`App.burst(x,y,chars,n)`、`App.toast()`、`App.store.get/set`（localStorage `relax`）。
-  - `games/wash.js`：刷刷洗洗。物品畫在 300×300 座標（OBJ 陣列，加新物品就加一個 draw 函式），髒污是隨機污漬疊在物品形狀上，手指用 destination-out 擦掉，刷到 96% 過關。
+  - `games/wash.js`：刷刷洗洗。20 樣物品畫在 300×300 座標（OBJ 陣列，加新物品就加一個 draw 函式，用 face() 加小臉），8 種髒污（DIRT）、6 種背景（BG）；每輪 20 樣洗牌不重複，髒污和背景每關隨機。`window.__clean=true` 可看乾淨版（測試用），髒污是隨機污漬疊在物品形狀上，手指用 destination-out 擦掉，刷到 96% 過關。
   - `games/sort.js`：整理小收納。ITEMS 是每樣東西的 SVG，LEVELS 是收納盒和每格位置（盒內座標中心點）。拖到同種類空格 40px 內就吸進去。
   - `games/toys.js`：泡泡紙（可滑過去連壓）、史萊姆（36 個彈簧點）、按鈕板、指尖陀螺（累計圈數存檔）。
 - 畫風：**一定要可愛**（使用者強調）。粉嫩配色、圓角、東西上加小臉（豆豆眼＋腮紅＋w 嘴）。

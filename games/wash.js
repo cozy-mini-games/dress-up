@@ -54,13 +54,161 @@
       g.fillStyle = '#fff6b0'; ell(g, 252, 178, 8, 12); g.fillStyle = '#f5a3c0'; ell(g, 48, 178, 7, 11);
       face(g, 150, 190, .8);
     }},
+
+    { name: '小茶杯', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 262, 116, 14);
+      g.fillStyle = '#fff'; g.strokeStyle = '#c9dbe6'; g.lineWidth = 4; ell(g, 150, 236, 120, 24, 0, true);
+      g.fillStyle = '#fbe3ec'; g.strokeStyle = '#e3a6bd'; g.beginPath(); g.moveTo(70, 110); g.lineTo(230, 110); g.quadraticCurveTo(228, 226, 150, 228); g.quadraticCurveTo(72, 226, 70, 110); g.closePath(); g.fill(); g.stroke();
+      g.lineWidth = 12; g.strokeStyle = '#fbe3ec'; g.beginPath(); g.arc(238, 150, 24, -1.3, 1.3); g.stroke(); g.lineWidth = 4; g.strokeStyle = '#e3a6bd'; g.beginPath(); g.arc(238, 150, 30, -1.2, 1.2); g.stroke();
+      g.fillStyle = '#c98a5a'; ell(g, 150, 112, 80, 12);
+      [[100, 200], [200, 196], [150, 212]].forEach(([x, y]) => heart(g, x, y, 9, '#f5a3c0'));
+      face(g, 150, 160, .8);
+    }},
+    { name: '小貓咪', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 268, 100, 14);
+      g.fillStyle = '#f7c58a'; g.strokeStyle = '#d99a52'; g.lineWidth = 4;
+      tri(g, 62, 120, 76, 40, 128, 88, true); tri(g, 238, 120, 224, 40, 172, 88, true);
+      ell(g, 150, 160, 104, 92, 0, true);
+      g.fillStyle = '#f5a3c0'; tri(g, 78, 104, 84, 60, 112, 88); tri(g, 222, 104, 216, 60, 188, 88);
+      g.fillStyle = '#e8a35e'; ell(g, 150, 84, 18, 10); ell(g, 120, 90, 10, 7); ell(g, 180, 90, 10, 7);
+      face(g, 150, 160, 1.1);
+      g.strokeStyle = '#a06a3a'; g.lineWidth = 2.5; [[-1, -6], [-1, 6], [1, -6], [1, 6]].forEach(([d, o]) => { g.beginPath(); g.moveTo(150 + d * 62, 180 + o); g.lineTo(150 + d * 100, 172 + o * 2); g.stroke(); });
+    }},
+    { name: '小兔子', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 272, 96, 14);
+      g.fillStyle = '#fff'; g.strokeStyle = '#d6cde0'; g.lineWidth = 4;
+      ell(g, 110, 70, 22, 62, -0.15, true); ell(g, 190, 70, 22, 62, 0.15, true);
+      g.fillStyle = '#fbd3e0'; ell(g, 110, 74, 10, 44, -0.15); ell(g, 190, 74, 10, 44, 0.15);
+      g.fillStyle = '#fff'; ell(g, 150, 180, 100, 86, 0, true);
+      face(g, 150, 182, 1.1);
+      g.fillStyle = '#f5a3c0'; ell(g, 150, 200, 6, 4);
+    }},
+    { name: '運動鞋', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 246, 128, 12);
+      g.fillStyle = '#fff'; g.strokeStyle = '#c9d3dd'; g.lineWidth = 4;
+      g.beginPath(); g.moveTo(40, 230); g.lineTo(40, 150); g.quadraticCurveTo(44, 110, 92, 108); g.lineTo(150, 140); g.quadraticCurveTo(240, 150, 262, 196); g.quadraticCurveTo(268, 230, 250, 232); g.closePath(); g.fill(); g.stroke();
+      g.fillStyle = '#8ccfe8'; rr(g, 34, 222, 236, 18, 9, false);
+      g.fillStyle = '#f5a3c0'; g.beginPath(); g.moveTo(80, 150); g.quadraticCurveTo(150, 140, 190, 200); g.lineTo(150, 205); g.quadraticCurveTo(120, 170, 80, 180); g.closePath(); g.fill();
+      g.strokeStyle = '#b9a3ef'; g.lineWidth = 4; g.lineCap = 'round'; for (let i = 0; i < 4; i++){ g.beginPath(); g.moveTo(100 + i * 14, 124 + i * 6); g.lineTo(122 + i * 14, 134 + i * 6); g.stroke(); }
+      face(g, 220, 200, .55);
+    }},
+    { name: '小熊玩偶', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 276, 100, 12);
+      g.fillStyle = '#c99a6b'; g.strokeStyle = '#a07445'; g.lineWidth = 4;
+      circ(g, 82, 70, 30, true); circ(g, 218, 70, 30, true);
+      ell(g, 150, 222, 74, 56, 0, true); circ(g, 82, 214, 22, true); circ(g, 218, 214, 22, true);
+      circ(g, 150, 122, 80, true);
+      g.fillStyle = '#f3dcc0'; circ(g, 82, 70, 15); circ(g, 218, 70, 15); ell(g, 150, 146, 32, 24); ell(g, 150, 228, 40, 30);
+      face(g, 150, 124, 1);
+      g.fillStyle = '#f5a3c0'; tri(g, 150, 186, 124, 172, 124, 200); tri(g, 150, 186, 176, 172, 176, 200); circ(g, 150, 186, 7);
+    }},
+    { name: '小豬撲滿', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 262, 110, 12);
+      g.fillStyle = '#f8b4c8'; g.strokeStyle = '#df8aa6'; g.lineWidth = 4;
+      tri(g, 92, 92, 100, 54, 130, 84, true); tri(g, 208, 92, 200, 54, 170, 84, true);
+      ell(g, 150, 160, 120, 92, 0, true);
+      rr(g, 84, 230, 26, 30, 8, true); rr(g, 190, 230, 26, 30, 8, true);
+      g.fillStyle = '#4a3550'; rr(g, 128, 74, 44, 8, 4, false);
+      g.fillStyle = '#f59ab4'; ell(g, 150, 178, 30, 20, 0, true); g.fillStyle = '#c4688a'; ell(g, 140, 178, 4, 7); ell(g, 160, 178, 4, 7);
+      face(g, 150, 140, 1);
+    }},
+    { name: '小青蛙', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 262, 114, 12);
+      g.fillStyle = '#9ad8a6'; g.strokeStyle = '#68b47a'; g.lineWidth = 4;
+      circ(g, 96, 92, 36, true); circ(g, 204, 92, 36, true);
+      ell(g, 150, 176, 118, 80, 0, true);
+      g.fillStyle = '#fff'; circ(g, 96, 92, 22); circ(g, 204, 92, 22);
+      g.fillStyle = '#4a3550'; circ(g, 98, 94, 11); circ(g, 202, 94, 11); g.fillStyle = '#fff'; circ(g, 102, 89, 4); circ(g, 206, 89, 4);
+      g.fillStyle = '#f7a8b0aa'; ell(g, 76, 180, 14, 8); ell(g, 224, 180, 14, 8);
+      g.strokeStyle = '#4a3550'; g.lineWidth = 4; g.beginPath(); g.arc(150, 160, 44, .3, Math.PI - .3); g.stroke();
+      g.fillStyle = '#c2e9c8'; ell(g, 150, 226, 60, 20);
+    }},
+    { name: '小企鵝', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 276, 90, 12);
+      g.fillStyle = '#5b6b8c'; g.strokeStyle = '#46546e'; g.lineWidth = 4;
+      ell(g, 150, 160, 90, 112, 0, true); ell(g, 64, 170, 18, 46, .4, true); ell(g, 236, 170, 18, 46, -.4, true);
+      g.fillStyle = '#fff'; ell(g, 150, 176, 66, 90);
+      g.fillStyle = '#f7b267'; ell(g, 120, 270, 22, 10); ell(g, 180, 270, 22, 10); tri(g, 150, 150, 134, 138, 166, 138);
+      face(g, 150, 124, .9);
+    }},
+    { name: '小雨傘', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 276, 90, 10);
+      g.strokeStyle = '#9b6b4a'; g.lineWidth = 7; g.lineCap = 'round'; g.beginPath(); g.moveTo(150, 120); g.lineTo(150, 248); g.arc(132, 248, 18, 0, Math.PI); g.stroke();
+      const cols = ['#f5a3c0', '#fff', '#8ccfe8', '#fff', '#f7cf6b', '#fff'];
+      for (let i = 0; i < 6; i++){ g.fillStyle = cols[i]; g.beginPath(); g.moveTo(150, 46); g.lineTo(30 + i * 40, 140); g.quadraticCurveTo(50 + i * 40, 126, 70 + i * 40, 140); g.closePath(); g.fill(); }
+      g.strokeStyle = '#e3a6bd'; g.lineWidth = 4; g.beginPath(); g.moveTo(30, 140); g.quadraticCurveTo(40, 30, 150, 46); g.quadraticCurveTo(260, 30, 270, 140); g.stroke();
+      g.fillStyle = '#f7cf6b'; circ(g, 150, 42, 7);
+      face(g, 150, 104, .6);
+    }},
+    { name: '小書包', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 274, 100, 12);
+      g.strokeStyle = '#d0605e'; g.lineWidth = 10; g.beginPath(); g.arc(150, 70, 34, Math.PI, 0); g.stroke();
+      g.fillStyle = '#f08a8a'; g.strokeStyle = '#d0605e'; g.lineWidth = 4; rr(g, 66, 66, 168, 200, 40, true);
+      g.fillStyle = '#f7a8a8'; rr(g, 66, 66, 168, 92, 40, true);
+      g.fillStyle = '#ffd95a'; rr(g, 96, 186, 108, 62, 18, true);
+      g.fillStyle = '#f7cf6b'; rr(g, 140, 140, 20, 26, 6, false);
+      face(g, 150, 112, .8);
+    }},
+    { name: '小茶壺', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 262, 110, 12);
+      g.fillStyle = '#bfe8d6'; g.strokeStyle = '#7cc9b4'; g.lineWidth = 4;
+      g.beginPath(); g.moveTo(222, 170); g.quadraticCurveTo(262, 140, 272, 104); g.lineTo(284, 108); g.quadraticCurveTo(272, 168, 230, 206); g.closePath(); g.fill(); g.stroke();
+      g.lineWidth = 12; g.strokeStyle = '#bfe8d6'; g.beginPath(); g.arc(60, 176, 34, Math.PI * .45, Math.PI * 1.55); g.stroke(); g.lineWidth = 4; g.strokeStyle = '#7cc9b4'; g.beginPath(); g.arc(60, 176, 40, Math.PI * .5, Math.PI * 1.5); g.stroke();
+      ell(g, 150, 180, 92, 78, 0, true); ell(g, 150, 108, 56, 16, 0, true); circ(g, 150, 88, 12, true);
+      flower(g, 108, 214, 10, '#f5a3c0'); flower(g, 192, 214, 10, '#f7cf6b');
+      face(g, 150, 168, .9);
+    }},
+    { name: '小烏龜', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 252, 124, 12);
+      g.fillStyle = '#b7dd9a'; g.strokeStyle = '#86b86a'; g.lineWidth = 4;
+      circ(g, 248, 168, 34, true); ell(g, 74, 236, 22, 16, 0, true); ell(g, 214, 236, 22, 16, 0, true); ell(g, 44, 196, 18, 10, .3, true);
+      g.fillStyle = '#8fc4a8'; g.strokeStyle = '#5f9a7e'; g.beginPath(); g.moveTo(40, 220); g.quadraticCurveTo(50, 90, 146, 86); g.quadraticCurveTo(240, 90, 250, 220); g.closePath(); g.fill(); g.stroke();
+      g.strokeStyle = '#5f9a7e'; g.lineWidth = 3; g.beginPath(); g.moveTo(146, 106); g.lineTo(120, 150); g.lineTo(146, 194); g.lineTo(172, 150); g.closePath(); g.moveTo(120, 150); g.lineTo(70, 160); g.moveTo(172, 150); g.lineTo(222, 160); g.moveTo(146, 194); g.lineTo(146, 220); g.stroke();
+      face(g, 254, 164, .55);
+    }},
+    { name: '小火箭', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 276, 80, 10);
+      g.fillStyle = '#f08a8a'; g.strokeStyle = '#d0605e'; g.lineWidth = 4;
+      g.beginPath(); g.moveTo(96, 200); g.lineTo(60, 250); g.lineTo(110, 236); g.closePath(); g.fill(); g.stroke();
+      g.beginPath(); g.moveTo(204, 200); g.lineTo(240, 250); g.lineTo(190, 236); g.closePath(); g.fill(); g.stroke();
+      g.fillStyle = '#f4f1ec'; g.strokeStyle = '#c9c3d6'; g.beginPath(); g.moveTo(150, 30); g.quadraticCurveTo(220, 100, 206, 240); g.lineTo(94, 240); g.quadraticCurveTo(80, 100, 150, 30); g.closePath(); g.fill(); g.stroke();
+      g.fillStyle = '#f08a8a'; g.beginPath(); g.moveTo(150, 30); g.quadraticCurveTo(186, 62, 196, 86); g.lineTo(104, 86); g.quadraticCurveTo(114, 62, 150, 30); g.closePath(); g.fill();
+      g.fillStyle = '#8ccfe8'; g.strokeStyle = '#c9c3d6'; circ(g, 150, 136, 30, true);
+      face(g, 150, 136, .55);
+      g.fillStyle = '#f7cf6b'; tri(g, 120, 244, 180, 244, 150, 280);
+    }},
+    { name: '小金魚', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 262, 110, 12);
+      g.fillStyle = '#f7a56b'; g.strokeStyle = '#e07f45'; g.lineWidth = 4;
+      g.beginPath(); g.moveTo(214, 150); g.quadraticCurveTo(262, 96, 280, 110); g.quadraticCurveTo(262, 150, 280, 192); g.quadraticCurveTo(262, 204, 214, 150); g.closePath(); g.fill(); g.stroke();
+      tri(g, 140, 84, 186, 70, 176, 112, true); tri(g, 150, 214, 180, 240, 184, 206, true);
+      ell(g, 136, 150, 96, 74, 0, true);
+      g.fillStyle = '#fbc89c'; ell(g, 112, 176, 44, 30);
+      g.strokeStyle = '#e07f45'; g.lineWidth = 2.5; for (let i = 0; i < 3; i++){ g.beginPath(); g.arc(170 + i * 16, 150, 18, -1, 1); g.stroke(); }
+      face(g, 96, 140, .75);
+      g.fillStyle = '#bfe4f5'; g.strokeStyle = '#8ccfe8'; g.lineWidth = 2; circ(g, 40, 92, 9, true); circ(g, 28, 62, 6, true); circ(g, 44, 40, 4, true);
+    }},
+    { name: '西瓜片', draw(g){
+      g.fillStyle = '#0000000f'; ell(g, 150, 250, 124, 12);
+      g.fillStyle = '#7cc47a'; g.beginPath(); g.moveTo(24, 110); g.arc(150, 110, 126, 0, Math.PI, false); g.closePath(); g.fill();
+      g.fillStyle = '#e9f7d8'; g.beginPath(); g.moveTo(36, 110); g.arc(150, 110, 114, 0, Math.PI, false); g.closePath(); g.fill();
+      g.fillStyle = '#f2737a'; g.beginPath(); g.moveTo(46, 110); g.arc(150, 110, 104, 0, Math.PI, false); g.closePath(); g.fill();
+      g.fillStyle = '#3d2a20'; [[90, 130], [210, 130], [120, 170], [180, 170], [150, 196], [70, 150], [230, 150]].forEach(([x, y]) => ell(g, x, y, 4, 7));
+      face(g, 150, 136, .8);
+    }},
   ];
   const DIRT = {
     mud:   { c: ['#8a5a36', '#9b6a42', '#6e4428', '#a77a4e'], foam: '#f3e8dc' },
     sauce: { c: ['#d9603a', '#c94f2e', '#e8814a', '#b8432a'], foam: '#fff1e8' },
     moss:  { c: ['#7d9a4a', '#6a8a3a', '#93ad5c', '#5c7a34'], foam: '#eef6e4' },
     ink:   { c: ['#6b6487', '#5a547a', '#7e7799', '#4d4769'], foam: '#f0eef8' },
+    choco: { c: ['#6b3e26', '#7d4a2e', '#5a321e', '#8c5a3a'], foam: '#f6ece4' },
+    paint: { c: ['#f08a8a', '#8ccfe8', '#f7cf6b', '#9ad8a6'], foam: '#ffffff' },
+    dust:  { c: ['#9a9aa6', '#8a8a96', '#b0b0bc', '#7a7a86'], foam: '#f4f4f8' },
+    gum:   { c: ['#f28ab0', '#e879a4', '#f5a3c0', '#d9668f'], foam: '#fff0f6' },
   };
+  const DNAME = { mud: '泥巴', sauce: '醬汁', moss: '青苔', ink: '墨水', choco: '巧克力', paint: '顏料', dust: '灰塵', gum: '口香糖' };
+  const BG = [['#e6f4fa', '#dff0f7'], ['#fdf0e2', '#fbe7d2'], ['#eef7e6', '#e3f2d8'], ['#f7ecf6', '#f0e0ef'], ['#eeeefa', '#e3e3f6'], ['#fff7dc', '#fbefc4']];
 
   function circ(g, x, y, r, stroke, onlyStroke){ g.beginPath(); g.arc(x, y, r, 0, Math.PI * 2); if (!onlyStroke) g.fill(); if (stroke || onlyStroke) g.stroke(); }
   function ell(g, x, y, rx, ry, rot = 0, stroke){ g.beginPath(); g.ellipse(x, y, rx, ry, rot, 0, Math.PI * 2); g.fill(); if (stroke) g.stroke(); }
@@ -72,9 +220,11 @@
     g.strokeStyle = '#4a3550'; g.lineWidth = 3 * k; g.lineCap = 'round';
     g.beginPath(); g.moveTo(x - 7 * k, y + 10 * k); g.quadraticCurveTo(x - 3.5 * k, y + 15 * k, x, y + 10 * k); g.quadraticCurveTo(x + 3.5 * k, y + 15 * k, x + 7 * k, y + 10 * k); g.stroke();
   }
+  function tri(g, a, b, c, d, e, f, stroke){ g.beginPath(); g.moveTo(a, b); g.lineTo(c, d); g.lineTo(e, f); g.closePath(); g.fill(); if (stroke) g.stroke(); }
+  function heart(g, x, y, r, c){ g.fillStyle = c; g.beginPath(); g.moveTo(x, y + r); g.bezierCurveTo(x - r * 2, y - r * .2, x - r * .8, y - r * 1.6, x, y - r * .5); g.bezierCurveTo(x + r * .8, y - r * 1.6, x + r * 2, y - r * .2, x, y + r); g.fill(); }
   function flower(g, x, y, r, c){ g.fillStyle = c; for (let k = 0; k < 5; k++){ const a = k / 5 * Math.PI * 2; circ(g, x + Math.cos(a) * r * .7, y + Math.sin(a) * r * .7, r * .55); } g.fillStyle = '#fff6b0'; circ(g, x, y, r * .4); }
 
-  let root, cv, ctx, obj, dirt, small, raf, foam = [], shine = [], level, W, H, S, OX, OY, dpr, initial = 1, last = null, moves = 0, finished = false, pct = 0;
+  let tile = ['#e6f4fa', '#dff0f7'], root, cv, ctx, obj, dirt, small, raf, foam = [], shine = [], level, W, H, S, OX, OY, dpr, initial = 1, last = null, moves = 0, finished = false, pct = 0;
 
   function mount(el){
     root = el; level = App.store.get('washLevel', 0);
@@ -100,8 +250,14 @@
     const box = cv.getBoundingClientRect(); dpr = Math.min(2, devicePixelRatio || 1);
     W = cv.width = Math.round(box.width * dpr); H = cv.height = Math.round(box.height * dpr);
     S = Math.min(W, H) / 330; OX = (W - 300 * S) / 2; OY = (H - 300 * S) / 2;
-    const o = OBJ[level % OBJ.length], d = DIRT[o.dirt];
-    root.querySelector('#wName').textContent = `第 ${level + 1} 個・${o.name}`;
+    // 每一輪把 20 樣東西洗牌，一輪內不重複；髒污和背景也隨機
+    const round = Math.floor(level / OBJ.length), pr = mulberry(round * 104729 + 7);
+    const order = OBJ.map((_, i) => i); for (let i = order.length - 1; i > 0; i--){ const j = Math.floor(pr() * (i + 1)); [order[i], order[j]] = [order[j], order[i]]; }
+    const lr = mulberry(level * 31337 + 99), keys = Object.keys(DIRT);
+    const o = OBJ[order[level % OBJ.length]], dk = keys[Math.floor(lr() * keys.length)], d = DIRT[dk];
+    tile = BG[Math.floor(lr() * BG.length)];
+    root.querySelector('#wBox').style.background = tile[1];
+    root.querySelector('#wName').textContent = `第 ${level + 1} 個・${DNAME[dk]}${o.name}`;
     obj = document.createElement('canvas'); obj.width = W; obj.height = H;
     const g = obj.getContext('2d'); g.setTransform(S, 0, 0, S, OX, OY); g.lineJoin = 'round'; o.draw(g);
     // 髒污：很多隨機的污漬塊，只留在物品上
@@ -121,6 +277,7 @@
     small = document.createElement('canvas'); small.width = 80; small.height = 80;
     initial = count() || 1; updateBar();
     obj.foam = d.foam;
+    if (window.__clean) dirt.getContext('2d').clearRect(0, 0, W, H);
   }
   function mulberry(a){ return () => { a |= 0; a = a + 0x6D2B79F5 | 0; let t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
   function count(){
@@ -168,7 +325,7 @@
     raf = requestAnimationFrame(loop);
     ctx.clearRect(0, 0, W, H);
     // 背景磁磚
-    ctx.fillStyle = '#e6f4fa'; const t = 34 * dpr;
+    ctx.fillStyle = tile[1]; ctx.fillRect(0, 0, W, H); ctx.fillStyle = tile[0]; const t = 34 * dpr;
     for (let y = 0; y < H; y += t) for (let x = (y / t) % 2 ? t : 0; x < W; x += t * 2) ctx.fillRect(x, y, t, t);
     ctx.drawImage(obj, 0, 0); ctx.drawImage(dirt, 0, 0);
     // 泡泡
