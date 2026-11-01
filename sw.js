@@ -1,7 +1,7 @@
 // 換裝小屋 Service Worker
 // 策略：有網路時一律先抓最新版（所以一更新就看得到），沒網路才用手機裡存的舊版。
 // 每次改檔案，把 VERSION +1，手機會自動換成新版。
-const VERSION = 3;
+const VERSION = 4;
 const CACHE = 'dressup-v' + VERSION;
 
 self.addEventListener('install', e => {

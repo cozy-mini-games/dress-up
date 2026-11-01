@@ -176,8 +176,19 @@ $('save').onclick = async () => {
     await (el.complete ? Promise.resolve() : new Promise(r => el.onload = r));
     g.drawImage(el, 0, 0, W, H);
   }
+  const blob = await new Promise(r => cv.toBlob(r, 'image/png'));
+  const file = new File([blob], '換裝小屋.png', { type: 'image/png' });
+  // 手機：跳出分享選單，可以選「儲存到相簿」或傳給朋友
+  if (navigator.canShare && navigator.canShare({ files: [file] })) {
+    try { await navigator.share({ files: [file], title: '換裝小屋' }); return; }
+    catch (e) { if (e.name === 'AbortError') return; }
+  }
+  // 電腦或不支援分享：直接下載
+  const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
-  a.download = '換裝小屋.png'; a.href = cv.toDataURL('image/png'); a.click();
+  a.download = '換裝小屋.png'; a.href = url; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+  toast('照片存好了 ♡');
 };
 
 // ===== 互動：眨眼、點她、摸頭、換裝反應、發呆時說話 =====
