@@ -26,5 +26,10 @@
 - **版權**：repo 是公開的。不能放任何有版權的角色或別人的畫（例如魔道祖師的角色、官方圖、別人畫的素體或表情包），也不要做成原作角色的同款造型。角色和衣服都要原創；一般古風元素（漢服、髮簪、水墨山水等）可以用。
 - 改完用模擬手機（Playwright）測試，截圖給她看效果。
 
+## App（PWA）與自動更新
+- `manifest.webmanifest` + `icons/`：可以「加到主畫面」像 App 一樣打開。右上角「下載 App」按鈕：Android Chrome 會直接跳安裝；iPhone 顯示 Safari 加入主畫面的步驟。
+- `sw.js`：有網路時一律抓最新版（network-first, `cache:'no-cache'`），沒網路才用快取。App 每分鐘和每次切回前景會檢查新版，有新版自動重新整理並顯示「已更新到最新版」。
+- **每次改檔：`sw.js` 的 `VERSION` +1**，再 commit、`git push origin HEAD:main`。
+
 ## 更新流程
 改好程式 → 推到 `main` → GitHub Pages 約 1～2 分鐘後上線 → 手機重新整理。

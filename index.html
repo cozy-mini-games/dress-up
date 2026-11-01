@@ -5,6 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#fbe4ec">
 <title>換裝小屋</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="換裝小屋">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
   html,body{margin:0;height:100%;}
@@ -16,7 +23,17 @@
   header{padding:10px 16px 4px;display:flex;align-items:center;justify-content:space-between;}
   header h1{margin:0;font-size:20px;font-weight:700;letter-spacing:1px;}
   #save{border:0;border-radius:999px;padding:8px 14px;background:#f29bb4;color:#fff;font-size:14px;font-weight:600;}
-  #save:active{transform:scale(.95);}
+  #save:active,#install:active{transform:scale(.95);}
+  .hbtns{display:flex;gap:6px;}
+  #install{border:2px solid #f29bb4;border-radius:999px;padding:6px 12px;background:#fff;color:#d76b8f;font-size:14px;font-weight:600;display:none;}
+  #toast{position:fixed;left:50%;top:14px;transform:translate(-50%,-80px);background:#fff;color:#c2557b;font-weight:700;padding:10px 16px;border-radius:14px;box-shadow:0 4px 14px #d76b8f33;transition:transform .35s;z-index:20;}
+  #toast.show{transform:translate(-50%,0);}
+  #sheet{position:fixed;inset:0;background:#0006;display:none;align-items:flex-end;z-index:30;}
+  #sheet.show{display:flex;}
+  #sheet>div{background:#fff;width:100%;border-radius:22px 22px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom));color:#7a4b5c;line-height:1.7;font-size:15px;}
+  #sheet h2{margin:0 0 8px;font-size:18px;color:#d76b8f;}
+  #sheet ol{margin:0;padding-left:22px;}
+  #sheet button{margin-top:14px;width:100%;border:0;border-radius:14px;padding:12px;background:#f29bb4;color:#fff;font-size:16px;font-weight:700;}
 
   #stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:4px 0;}
   #doll{position:relative;height:100%;aspect-ratio:339/610;max-width:92vw;border-radius:24px;transition:background .3s;}
@@ -62,7 +79,7 @@
 <body>
   <header>
     <h1>換裝小屋</h1>
-    <button id="save">存成照片</button>
+    <div class="hbtns"><button id="install">下載 App</button><button id="save">存成照片</button></div>
   </header>
 
   <div id="stage">
@@ -77,6 +94,13 @@
       <div id="hint">點點她、摸摸頭看看 ♡</div>
     </div>
   </div>
+
+  <div id="toast"></div>
+  <div id="sheet"><div>
+    <h2>把換裝小屋放到主畫面</h2>
+    <ol id="sheetSteps"></ol>
+    <button id="sheetOk">知道了</button>
+  </div></div>
 
   <nav id="tabs"></nav>
   <div id="panel"></div>
@@ -239,6 +263,40 @@ setInterval(() => {
 
 render();
 setTimeout(() => { say('嗨～今天想怎麼打扮我？'); setFace('happy', 1200); }, 600);
+
+// ===== 像 App 一樣安裝 + 自動更新 =====
+function toast(t){ const e = $('toast'); e.textContent = t; e.classList.add('show'); setTimeout(() => e.classList.remove('show'), 2600); }
+const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone;
+const isIOS = /iPhone|iPad|iPod/.test(navigator.userAgent);
+let deferred = null;
+if (!standalone) $('install').style.display = 'block';
+addEventListener('beforeinstallprompt', e => { e.preventDefault(); deferred = e; $('install').style.display = 'block'; });
+addEventListener('appinstalled', () => { $('install').style.display = 'none'; toast('裝好了！去主畫面找我 ♡'); });
+$('install').onclick = async () => {
+  if (deferred){ deferred.prompt(); await deferred.userChoice; deferred = null; return; }
+  $('sheetSteps').innerHTML = isIOS
+    ? '<li>用 <b>Safari</b> 打開這個網頁</li><li>按下面中間的「分享」按鈕（方框加向上箭頭）</li><li>往下滑，選「<b>加入主畫面</b>」</li><li>按右上角「新增」</li>'
+    : '<li>用 <b>Chrome</b> 打開這個網頁</li><li>按右上角「⋮」（三個點）</li><li>選「<b>加到主畫面</b>」或「<b>安裝應用程式</b>」</li><li>按「安裝」或「新增」</li>';
+  $('sheet').classList.add('show');
+};
+$('sheetOk').onclick = () => $('sheet').classList.remove('show');
+
+if ('serviceWorker' in navigator){
+  const hadController = !!navigator.serviceWorker.controller;
+  navigator.serviceWorker.register('sw.js').then(reg => {
+    const check = () => reg.update().catch(() => {});
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) check(); });
+    setInterval(check, 60 * 1000);
+  });
+  let reloaded = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (!hadController || reloaded) return;
+    reloaded = true;
+    sessionStorage.setItem('justUpdated', '1');
+    location.reload();
+  });
+  if (sessionStorage.getItem('justUpdated')){ sessionStorage.removeItem('justUpdated'); setTimeout(() => toast('已更新到最新版 ♡'), 400); }
+}
 </script>
 </body>
 </html>
