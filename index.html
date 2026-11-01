@@ -26,14 +26,16 @@
   #save:active,#install:active{transform:scale(.95);}
   .hbtns{display:flex;gap:6px;}
   #install{border:2px solid #f29bb4;border-radius:999px;padding:6px 12px;background:#fff;color:#d76b8f;font-size:14px;font-weight:600;display:none;}
+  #about{border:0;background:none;color:#c08aa0;font-size:20px;padding:4px 2px;}
   #toast{position:fixed;left:50%;top:14px;transform:translate(-50%,-80px);background:#fff;color:#c2557b;font-weight:700;padding:10px 16px;border-radius:14px;box-shadow:0 4px 14px #d76b8f33;transition:transform .35s;z-index:20;}
   #toast.show{transform:translate(-50%,0);}
-  #sheet{position:fixed;inset:0;background:#0006;display:none;align-items:flex-end;z-index:30;}
-  #sheet.show{display:flex;}
-  #sheet>div{background:#fff;width:100%;border-radius:22px 22px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom));color:#7a4b5c;line-height:1.7;font-size:15px;}
-  #sheet h2{margin:0 0 8px;font-size:18px;color:#d76b8f;}
+  .sheet,#sheet{position:fixed;inset:0;background:#0006;display:none;align-items:flex-end;z-index:30;}
+  .sheet.show,#sheet.show{display:flex;}
+  .sheet>div,#sheet>div{background:#fff;width:100%;border-radius:22px 22px 0 0;padding:20px 20px calc(20px + env(safe-area-inset-bottom));color:#7a4b5c;line-height:1.7;font-size:15px;}
+  .sheet p{margin:0 0 10px;}
+  .sheet h2,#sheet h2{margin:0 0 8px;font-size:18px;color:#d76b8f;}
   #sheet ol{margin:0;padding-left:22px;}
-  #sheet button{margin-top:14px;width:100%;border:0;border-radius:14px;padding:12px;background:#f29bb4;color:#fff;font-size:16px;font-weight:700;}
+  .sheet button,#sheet button{margin-top:14px;width:100%;border:0;border-radius:14px;padding:12px;background:#f29bb4;color:#fff;font-size:16px;font-weight:700;}
 
   #stage{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;padding:4px 0;}
   #doll{position:relative;height:100%;aspect-ratio:339/610;max-width:92vw;border-radius:24px;transition:background .3s;}
@@ -79,7 +81,7 @@
 <body>
   <header>
     <h1>換裝小屋</h1>
-    <div class="hbtns"><button id="install">下載 App</button><button id="save">存成照片</button></div>
+    <div class="hbtns"><button id="about" aria-label="關於">ⓘ</button><button id="install">下載 App</button><button id="save">存成照片</button></div>
   </header>
 
   <div id="stage">
@@ -100,6 +102,14 @@
     <h2>把換裝小屋放到主畫面</h2>
     <ol id="sheetSteps"></ol>
     <button id="sheetOk">知道了</button>
+  </div></div>
+
+  <div id="aboutSheet" class="sheet"><div>
+    <h2>關於換裝小屋</h2>
+    <p>這是一個<b>個人製作、非營利</b>的小遊戲，做來送給朋友玩，不收費、不放廣告，也不會用於任何商業用途。</p>
+    <p>遊戲中的人物、髮型與服裝為本作者使用 AI 繪圖工具生成後自行修改的原創素材，並非任何現有作品的角色。</p>
+    <p>如果你認為本站有任何內容侵犯了你的權利，請聯絡作者，我會盡快處理或移除。</p>
+    <button id="aboutOk">知道了</button>
   </div></div>
 
   <nav id="tabs"></nav>
@@ -291,6 +301,8 @@ $('install').onclick = async () => {
   $('sheet').classList.add('show');
 };
 $('sheetOk').onclick = () => $('sheet').classList.remove('show');
+$('about').onclick = () => $('aboutSheet').classList.add('show');
+$('aboutOk').onclick = () => $('aboutSheet').classList.remove('show');
 
 if ('serviceWorker' in navigator){
   const hadController = !!navigator.serviceWorker.controller;
